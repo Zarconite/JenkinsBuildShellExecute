@@ -15,6 +15,8 @@ rm -rf $INSTALL_FOLDER/*
 #Copy the Jar
 JAR="$(ls target/ | grep .jar | grep -v .original)"
 cp target/$JAR $INSTALL_FOLDER/$JAR
+scp target/$JAR 10.0.0.5:~
+ssh 10.0.0.5 ./runhelloworld.sh
 
 #Run the Jar
 BUILD_ID=dontKillMe java -jar $INSTALL_FOLDER/$JAR 2>&1 &
